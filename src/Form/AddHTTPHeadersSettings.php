@@ -79,6 +79,16 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
       ],
     ];
 
+    $form['security']['Access-Control-Allow-Origin'] = [
+      '#type'          => 'textfield',
+      '#title'         => $this->t('Access-Control-Allow-Origin'),
+      '#default_value' => !empty($security['Access-Control-Allow-Origin']) ? $security['Access-Control-Allow-Origin'] : '',
+      '#description'   => $this->t("Access-Control-Allow-Origin is apart of the Cross Origin Resource Sharing (CORS) specification. This header is used to determine which sites are allowed to access the resource by defining either a single origin or all sites (denoted by a wildcard value)."),
+      '#attributes'    => [
+        'placeholder' => 'Example: *',
+      ],
+    ];
+
     $form['security']['X-Xss-Protection'] = [
       '#type'          => 'textfield',
       '#title'         => $this->t('X-Xss-Protection'),
@@ -136,12 +146,13 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
 
     // Security
     $security = [
-      'Content-Security-Policy'   => $form_state->getValue('Content-Security-Policy'),
-      'Strict-Transport-Security' => $form_state->getValue('Strict-Transport-Security'),
-      'Public-Key-Pins'           => $form_state->getValue('Public-Key-Pins'),
-      'X-Xss-Protection'          => $form_state->getValue('X-Xss-Protection'),
-      'X-Frame-Options'           => $form_state->getValue('X-Frame-Options'),
-      'X-Content-Type-Options'    => $form_state->getValue('X-Content-Type-Options'),
+      'Content-Security-Policy'     => $form_state->getValue('Content-Security-Policy'),
+      'Strict-Transport-Security'   => $form_state->getValue('Strict-Transport-Security'),
+      'Public-Key-Pins'             => $form_state->getValue('Public-Key-Pins'),
+      'Access-Control-Allow-Origin' => $form_state->getValue('Access-Control-Allow-Origin'),
+      'X-Xss-Protection'            => $form_state->getValue('X-Xss-Protection'),
+      'X-Frame-Options'             => $form_state->getValue('X-Frame-Options'),
+      'X-Content-Type-Options'      => $form_state->getValue('X-Content-Type-Options'),
     ];
 
     // Performance

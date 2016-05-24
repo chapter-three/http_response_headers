@@ -1,0 +1,6 @@
+http_response_headers.admin_config:
+  title: HTTP Response Headers
+  parent: system.admin_config_development
+  description: 'Configure HTTP Response Headers (Secure HTTP headers and imrpove performance).'
+  route_name: http_response_headers.settings
+  weight: 0

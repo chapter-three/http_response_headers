@@ -34,6 +34,18 @@ class AddHTTPHeaders implements EventSubscriberInterface {
       }
     }
 
+    $authenticated_only = $config->get('performance_authenticated_only');
+    $current_user = \Drupal::currentUser();
+    // Performance HTTP headers.
+    if ($authenticated_only && !$current_user->isAnonymous()) {
+      $performance = $config->get('performance');
+      foreach ($performance as $param => $value) {
+        if (!empty($value)) {
+          $response->headers->set($param, $value);
+        }
+      }
+    }
+
   }
 
   /**

@@ -135,6 +135,12 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
       ],
     ];
 
+    $form['performance']['authenticated_only'] = [
+      '#type'          => 'checkbox',
+      '#title'         => $this->t('Apply performance headers to authenticated users only.'),
+      '#default_value' => !empty($performance['authenticated_only']) ? $performance['authenticated_only'] : TRUE,
+    ];
+
     $form['info'] = [
       '#markup' => 'Please read my blog post about each HTTP parameter. I would also recommend to read articles from the Useful links section in my blog post: <a href="https://www.chapterthree.com/blog/how-to-secure-drupal-http-headers" target="_blank">How to Secure Drupal HTTP Headers</a>',
     ];
@@ -161,7 +167,7 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
 
     // Performance
     $performance = [
-      'Cache-Control' => $form_state->getValue('Cache-Control')
+      'Cache-Control' => $form_state->getValue('Cache-Control'),
     ];
 
     // Save settings.
@@ -170,6 +176,7 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
       ->set('security', $security)
       // Performance
       ->set('performance', $performance)
+      ->set('performance_authenticated_only', $form_state->getValue('authenticated_only'))
       ->save();
 
     // Clear Drupal cache.

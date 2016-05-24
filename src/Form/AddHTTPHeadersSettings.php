@@ -135,6 +135,10 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
       ],
     ];
 
+    $form['info'] = [
+      '#markup' => 'Please read my blog post about each HTTP parameter. I would also recommend to read articles from the Useful links section in my blog post: <a href="https://www.chapterthree.com/blog/how-to-secure-drupal-http-headers" target="_blank">How to Secure Drupal HTTP Headers</a>',
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 

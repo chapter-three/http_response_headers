@@ -13,4 +13,4 @@ This module allows the following HTTP header configurations:
 * X-Content-Type-Options
 * Cache-Control
 
-Please intall the module and configure it here `admin/config/development/http_response_headers`.
+Please install the module and configure it here `admin/config/development/http_response_headers`.

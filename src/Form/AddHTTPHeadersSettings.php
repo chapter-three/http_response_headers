@@ -137,7 +137,7 @@ class AddHTTPHeadersSettings extends ConfigFormBase {
 
     $form['performance']['authenticated_only'] = [
       '#type'          => 'checkbox',
-      '#title'         => $this->t('Apply performance headers to authenticated users only.'),
+      '#title'         => $this->t('Apply performance headers to authenticated users only. Disabled for all users if unchecked.'),
       '#default_value' => !empty($performance['authenticated_only']) ? $performance['authenticated_only'] : TRUE,
     ];
 
